@@ -101,15 +101,4 @@ flowchart TD
 - Enables customer trust through verifiable controls and certifications  
 - Supports cutting-edge LLMs and AI applications with layered defense  
 - Offers hybrid flexibility without sacrificing security or observability  
-- Built to evolve with frameworks like ISO 42001, NIS2, and DORA  
-
----
-
-**Next Steps:**  
-Pair this document with:
-- `cloud-tech-stack.md`
-- `cloud-tech-diagram.md`
-- `cloud-governance-policy.md` *(optional)*
-- `trust-assurance-readiness.md` *(optional)*
-
-To fully showcase your architecture-as-leadership capability.
+- Built to evolve with frameworks like ISO 42001, NIS2, and DORA
