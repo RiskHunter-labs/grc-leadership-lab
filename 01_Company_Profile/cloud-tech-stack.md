@@ -1,6 +1,6 @@
-# ☁️ Athenex Solutions – Cloud & Technology Stack Overview
+# ☁️ Athenex Solutions – Cloud & Hybrid Tech Stack Overview
 
-_Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure, GCP, and OCI to deliver secure, scalable, and compliant services to regulated industries._
+_Athenex Solutions operates a cloud-first, hybrid-enabled architecture across AWS, Azure, GCP, and OCI, with strategic on-premise and co-location environments to meet compliance, sovereignty, and AI latency requirements._
 
 ---
 
@@ -9,9 +9,10 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 | Cloud Provider | Primary Usage |
 |----------------|----------------|
 | **AWS**        | Core SaaS hosting, IAM, container workloads (EKS), CDN (CloudFront) |
-| **Azure**      | Enterprise IT systems, identity (Azure AD), M365, regulated workloads |
-| **GCP**        | AI/ML pipelines, LLM training, analytics (BigQuery), DevSecOps |
-| **OCI**        | Oracle-based workloads for financial and healthcare clients |
+| **Azure**      | Enterprise IT systems, identity (Azure AD), M365, regulated client data zones |
+| **GCP**        | AI/ML pipelines, LLM training & inference, analytics (BigQuery), DevSecOps environments |
+| **OCI**        | Oracle-based workloads for healthcare and financial clients |
+| **Colo / On-Prem** | Air-gapped R&D zones, legacy ERP interop, edge AI inference, regional BCDR |
 
 ---
 
@@ -19,9 +20,9 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 
 | Layer                     | Technologies Used |
 |---------------------------|-------------------|
-| Virtual Compute           | AWS EC2, Azure VMs, GCP Compute Engine |
+| Virtual Compute           | AWS EC2, Azure VMs, GCP Compute Engine, On-Prem VM Hosts |
 | Containerization          | Docker, AWS Fargate, Azure Container Instances |
-| Kubernetes Orchestration  | Amazon EKS, Azure AKS, GCP GKE, Rancher |
+| Kubernetes Orchestration  | Amazon EKS, Azure AKS, GCP GKE, Rancher, microK8s (on-prem edge) |
 | Serverless                | AWS Lambda, Azure Functions, GCP Cloud Functions |
 
 ---
@@ -30,7 +31,7 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 
 | Category         | Stack |
 |------------------|-------|
-| Relational DBs   | PostgreSQL, MySQL (RDS), Oracle DB (OCI), SQL Server |
+| Relational DBs   | PostgreSQL, MySQL (RDS), Oracle DB (OCI/on-prem), SQL Server |
 | NoSQL Databases  | DynamoDB, Firestore, CosmosDB, Redis, MongoDB Atlas |
 | Data Lakes       | S3 + Athena, Azure Data Lake, GCP BigQuery |
 | BI / Analytics   | Looker, Power BI, Tableau, Amazon QuickSight |
@@ -41,11 +42,11 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 
 | Area                    | Tech Stack / Services |
 |--------------------------|------------------------|
-| AI Infrastructure       | GCP Vertex AI, Azure OpenAI, AWS SageMaker, OCI Data Science |
-| LLM Training / Hosting  | LLaMA 2, Mistral on GCP/Azure, fine-tuning pipelines |
-| Model Serving           | Triton, TensorFlow Serving, SageMaker Endpoints |
+| AI Infrastructure       | GCP Vertex AI, Azure OpenAI, AWS SageMaker, OCI Data Science, on-prem R&D clusters |
+| LLM Training / Hosting  | LLaMA 2, Mistral on GCP/Azure; sensitive training on air-gapped hardware |
+| Model Serving           | Triton, TensorFlow Serving, SageMaker Endpoints, Edge Inference (K3s) |
 | Prompt Orchestration    | LangChain, LlamaIndex, PromptFlow, Bedrock |
-| AI Governance           | MLflow, ISO 42001 alignment, NIST AI RMF, Explainable AI (GCP) |
+| AI Governance           | MLflow, ISO 42001 alignment, NIST AI RMF, GCP Explainable AI |
 
 ---
 
@@ -67,7 +68,7 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 | Area               | Stack |
 |--------------------|-------|
 | CI/CD Pipelines    | GitHub Actions, GitLab CI, Azure DevOps, Jenkins, ArgoCD |
-| Infrastructure as Code | Terraform, Pulumi, CloudFormation, Bicep |
+| Infrastructure as Code | Terraform (cloud + on-prem), Pulumi, CloudFormation, Bicep |
 | Config Management  | Ansible, Chef, AWS Systems Manager, Azure Automation |
 | Observability      | Prometheus, Grafana, Datadog, CloudWatch, Azure Monitor |
 
@@ -84,15 +85,23 @@ _Athenex Solutions operates a hybrid multi-cloud architecture across AWS, Azure,
 
 ---
 
-## Summary
+## 8. Hybrid Footprint: Co-Location & On-Prem Strategy
 
-Athenex’s cloud and tech stack is designed to support secure innovation, resilience, and global compliance across financial services, healthcare, public sector, and other regulated industries. Our hybrid cloud strategy blends the best of AWS, Azure, GCP, and OCI to support:
-
-- AI model development and deployment (LLMs, agents)
-- Secure SaaS delivery at scale
-- Enterprise-grade compliance (ISO, SOC, PCI, FedRAMP, GDPR, HIPAA, etc.)
-- Proactive risk, identity, and vulnerability management
-
-This architecture reflects our strategic commitment to trust, transparency, and technology leadership.
+| Environment Type         | Description & Use Case |
+|--------------------------|-------------------------|
+| **Private Data Vaults**  | Co-located Oracle & SQL servers for HIPAA, SOX, financial records |
+| **Edge AI Inference Nodes** | microK8s clusters for low-latency AI workloads in regulated markets |
+| **Air-Gapped AI R&D Labs** | Internal facilities for model testing, red teaming, safety analysis |
+| **Legacy ERP Gateways**  | Interoperability zones for financial and manufacturing clients |
+| **Regional DR Sites**    | Hybrid disaster recovery across cloud and colocation backups |
 
 ---
+
+## Summary
+
+Athenex’s tech stack is designed for **secure, scalable, and compliance-first service delivery**. By combining multi-cloud agility with **selective on-prem control**, we meet the **most demanding requirements** in healthcare, finance, energy, and public sector environments. Our architecture supports:
+
+- AI innovation (LLMs, agents, prompt chaining)
+- Regulated cloud workloads with full observability
+- Global data protection and sovereignty compliance
+- Modular SaaS platforms with customer trust built-in
