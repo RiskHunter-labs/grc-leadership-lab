@@ -1,1 +1,28 @@
-
+Resources:
+  ComplianceAuditorPolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "StrictIAMChangeMonitoring"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Deny"
+            Action:
+              - "iam:CreateUser"
+              - "iam:DeleteUser"
+              - "iam:AttachUserPolicy"
+              - "iam:PutUserPolicy"
+              - "iam:AddUserToGroup"
+              - "iam:RemoveUserFromGroup"
+              - "iam:CreateAccessKey"
+            Resource: "*"
+            Condition:
+              BoolIfExists:
+                "aws:MultiFactorAuthPresent": "false"
+          - Effect: "Allow"
+            Action:
+              - "iam:Get*"
+              - "iam:List*"
+            Resource: "*"
+      Roles:
+        - !Ref ComplianceAuditorRole
