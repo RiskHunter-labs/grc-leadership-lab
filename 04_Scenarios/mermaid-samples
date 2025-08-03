@@ -1,0 +1,30 @@
+'''mermaid
+flowchart LR
+
+  %% Phase 1: Event Generation
+  subgraph Phase1 [Event Generation]
+    A1([IAM Change Attempt])
+    A2([CloudTrail Logs Event])
+    A1 --> A2
+  end
+
+  %% Phase 2: Detection & Processing
+  subgraph Phase2 [Detection & Processing]
+    B1([CloudWatch Logs Stream])
+    B2([Lambda Audit Triggered on Schedule])
+    B3([Parse IAM Events - Flag Missing MFA])
+    B1 --> B2 --> B3
+  end
+
+  %% Phase 3: Escalation & Response
+  subgraph Phase3 [Escalation & Response]
+    C1([Generate Findings])
+    C2([Send SNS Notification])
+    C3([Compliance Review or POA&M Update])
+    C1 --> C2 --> C3
+  end
+
+  %% Connect phases
+  A2 --> B1
+  B3 --> C1
+  '''
