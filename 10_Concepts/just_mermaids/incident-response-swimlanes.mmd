@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph User
+        U1[Report Incident]
+    end
+    subgraph SecOps
+        S1[Triage] --> S2[Containment]
+        S2 --> S3[Eradication]
+        S3 --> S4[Recovery]
+    end
+    subgraph GRC
+        G1[Record in IR Register] --> G2[Regulatory Assessment]
+        G2 --> G3[Stakeholder Comms]
+        G3 --> G4[Post-Incident Review]
+    end
+    U1 --> S1
+    S4 --> G4

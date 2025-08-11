@@ -1,0 +1,13 @@
+flowchart LR
+    A[Risk Identified] --> B{Meets Risk Appetite?}
+    B -- Yes --> C[Accept]
+    B -- No --> D{Feasible to Reduce?}
+    D -- Yes --> E[Mitigate / Reduce]
+    D -- No --> F{Transfer Viable?}
+    F -- Yes --> G[Transfer (Insurance / Contract)]
+    F -- No --> H[Avoid / De-scope]
+    E --> I[Implement Controls]
+    I --> J[Residual Risk Reviewed]
+    J --> K{Meets Appetite?}
+    K -- Yes --> L[Accept]
+    K -- No --> H

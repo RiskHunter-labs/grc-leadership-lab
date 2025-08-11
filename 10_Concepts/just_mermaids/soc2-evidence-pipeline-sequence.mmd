@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant Dev as Dev
+    participant CI as CI/CD
+    participant Cloud as Cloud Provider
+    participant GRC as GRC Evidence Store
+    participant Auditor as Auditor
+    Dev->>CI: Commit change (PR)
+    CI->>Cloud: Deploy with policy checks
+    Cloud-->>CI: Attest deployment (tags, logs)
+    CI->>GRC: Push artifacts (logs, configs, screenshots)
+    GRC-->>Auditor: Provide evidence package

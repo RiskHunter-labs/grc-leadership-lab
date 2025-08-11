@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph PLAN
+        A[Context & Scope] --> B[Risk Assessment]
+        B --> C[Statement of Applicability]
+        C --> D[Objectives & Program Plan]
+    end
+    subgraph DO
+        E[Implement Controls] --> F[Awareness & Training]
+        F --> G[Operate Processes]
+    end
+    subgraph CHECK
+        H[Monitor & Measure KPIs/KRIs] --> I[Internal Audit]
+        I --> J[Management Review]
+    end
+    subgraph ACT
+        K[Corrective Actions] --> L[Continual Improvement]
+    end
+    D --> E
+    G --> H
+    J --> K
+    L --> A
