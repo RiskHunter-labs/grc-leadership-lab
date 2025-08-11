@@ -1,5 +1,5 @@
 ```mermaid
-flowchart LR
+flowchart TD
   subgraph "Data Ingestion"
     DI["Stage: Data Ingestion"]
     R1["Risk: PII leakage; biased sources; data poisoning"]
