@@ -1,4 +1,7 @@
 flowchart LR
+  %% Optional: keep Mermaid simple and text-only
+  %%{init: {"flowchart": {"useMaxWidth": true, "htmlLabels": false}} }%%
+
   %% STYLE DEFINITIONS
   classDef risk fill=#ffcccc,stroke=#cc0000,stroke-width=1px,color=#660000;
   classDef control fill=#ccffcc,stroke=#009900,stroke-width=1px,color=#003300;
@@ -6,84 +9,57 @@ flowchart LR
 
   %% PIPELINE STAGES
   subgraph D1["Data Ingestion"]
-    DI[Stage: Data Ingestion]:::stage
-    R1[Risk: PII leakage, bias in source data, data poisoning]:::risk
-    C1[Control: DLP scanning, bias detection, source validation, cryptographic checksums  
-    **ISO/IEC 42001:** 8.6.2, 8.5.3  
-    **NIST AI RMF:** Map 1.3, Manage 2.2  
-    **EU AI Act:** Art. 10(3)]:::control
+    DI["Stage: Data Ingestion"]:::stage
+    R1["Risk: PII leakage; biased sources; data poisoning"]:::risk
+    C1["Control: DLP scanning; bias detection; source validation; cryptographic checksums | ISO/IEC 42001: 8.6.2, 8.5.3 | NIST AI RMF: Map 1.3, Manage 2.2 | EU AI Act: Art. 10(3)"]:::control
   end
 
   subgraph D2["Data Storage & Governance"]
-    DG[Stage: Storage & Governance]:::stage
-    R2[Risk: Unauthorized access, lack of lineage, regulatory non-compliance]:::risk
-    C2[Control: IAM & RBAC, encryption at rest, lineage tracking, retention policies  
-    **ISO/IEC 42001:** 8.6.1, 8.6.3  
-    **NIST AI RMF:** Govern 1.2, Manage 3.1  
-    **EU AI Act:** Art. 15]:::control
+    DG["Stage: Storage & Governance"]:::stage
+    R2["Risk: Unauthorized access; missing lineage; non-compliance"]:::risk
+    C2["Control: IAM/RBAC; encryption at rest; lineage tracking; retention policies | ISO/IEC 42001: 8.6.1, 8.6.3 | NIST AI RMF: Govern 1.2, Manage 3.1 | EU AI Act: Art. 15"]:::control
   end
 
   subgraph D3["Data Prep & Labeling"]
-    DP[Stage: Preparation & Labeling]:::stage
-    R3[Risk: Label bias, annotation errors, leakage of sensitive info to annotators]:::risk
-    C3[Control: Multi-annotator QA, anonymization, consensus labeling, bias-aware sampling  
-    **ISO/IEC 42001:** 8.5.2, 8.5.4  
-    **NIST AI RMF:** Map 2.1, Manage 2.3  
-    **EU AI Act:** Art. 10(5)]:::control
+    DP["Stage: Preparation & Labeling"]:::stage
+    R3["Risk: Label bias; annotation errors; sensitive info exposure"]:::risk
+    C3["Control: Multi-annotator QA; anonymization; consensus labeling; bias-aware sampling | ISO/IEC 42001: 8.5.2, 8.5.4 | NIST AI RMF: Map 2.1, Manage 2.3 | EU AI Act: Art. 10(5)"]:::control
   end
 
   subgraph D4["Feature Engineering"]
-    FE[Stage: Feature Engineering & Store]:::stage
-    R4[Risk: Feature leakage, inconsistent offline/online features]:::risk
-    C4[Control: Feature parity testing, schema validation, secure feature store access  
-    **ISO/IEC 42001:** 8.7.3  
-    **NIST AI RMF:** Map 3.2, Manage 2.1  
-    **EU AI Act:** Annex IV]:::control
+    FE["Stage: Feature Engineering & Store"]:::stage
+    R4["Risk: Feature leakage; offline/online feature skew"]:::risk
+    C4["Control: Feature parity testing; schema validation; secure feature store access | ISO/IEC 42001: 8.7.3 | NIST AI RMF: Map 3.2, Manage 2.1 | EU AI Act: Annex IV"]:::control
   end
 
   subgraph D5["Model Training"]
-    MT[Stage: Model Training]:::stage
-    R5[Risk: Data poisoning, overfitting, insecure training environment]:::risk
-    C5[Control: Secure enclaves, adversarial training, regularization, reproducibility checks  
-    **ISO/IEC 42001:** 8.7.1, 8.7.4  
-    **NIST AI RMF:** Govern 2.3, Manage 3.2  
-    **EU AI Act:** Art. 15(2)]:::control
+    MT["Stage: Model Training"]:::stage
+    R5["Risk: Data poisoning; overfitting; insecure training environment"]:::risk
+    C5["Control: Secure enclaves; adversarial training; regularization; reproducibility checks | ISO/IEC 42001: 8.7.1, 8.7.4 | NIST AI RMF: Govern 2.3, Manage 3.2 | EU AI Act: Art. 15(2)"]:::control
   end
 
   subgraph D6["Evaluation & Validation"]
-    EV[Stage: Evaluation & Validation]:::stage
-    R6[Risk: Hidden bias, incomplete test coverage, fairness gaps]:::risk
-    C6[Control: Fairness metrics (DP, EO), stress testing, model cards, red teaming  
-    **ISO/IEC 42001:** 8.8.1, 8.8.2  
-    **NIST AI RMF:** Map 4.1, Manage 4.3  
-    **EU AI Act:** Art. 14(4)]:::control
+    EV["Stage: Evaluation & Validation"]:::stage
+    R6["Risk: Hidden bias; incomplete test coverage; fairness gaps"]:::risk
+    C6["Control: Fairness metrics (DP, EO); stress testing; model cards; red teaming | ISO/IEC 42001: 8.8.1, 8.8.2 | NIST AI RMF: Map 4.1, Manage 4.3 | EU AI Act: Art. 14(4)"]:::control
   end
 
   subgraph D7["Model Registry & CI/CD"]
-    MR[Stage: Registry & Release]:::stage
-    R7[Risk: Unapproved model promotion, tampering, dependency vulnerabilities]:::risk
-    C7[Control: Approval gates, signed artifacts, dependency scanning, SBOMs  
-    **ISO/IEC 42001:** 8.9.1, 8.9.2  
-    **NIST AI RMF:** Govern 3.1, Manage 4.1  
-    **EU AI Act:** Art. 15(3)]:::control
+    MR["Stage: Registry & Release"]:::stage
+    R7["Risk: Unapproved promotion; tampering; vulnerable dependencies"]:::risk
+    C7["Control: Approval gates; signed artifacts; dependency scanning; SBOMs | ISO/IEC 42001: 8.9.1, 8.9.2 | NIST AI RMF: Govern 3.1, Manage 4.1 | EU AI Act: Art. 15(3)"]:::control
   end
 
   subgraph D8["Deployment & Serving"]
-    DS[Stage: Deployment]:::stage
-    R8[Risk: Prompt injection, model theft, unsafe outputs]:::risk
-    C8[Control: Output filters, API rate limiting, watermarking, access controls  
-    **ISO/IEC 42001:** 8.10.1, 8.10.3  
-    **NIST AI RMF:** Manage 5.1, Map 5.2  
-    **EU AI Act:** Art. 14(5)]:::control
+    DS["Stage: Deployment"]:::stage
+    R8["Risk: Prompt injection; model theft; unsafe outputs"]:::risk
+    C8["Control: Output filters; API rate limiting; watermarking; access controls | ISO/IEC 42001: 8.10.1, 8.10.3 | NIST AI RMF: Manage 5.1, Map 5.2 | EU AI Act: Art. 14(5)"]:::control
   end
 
   subgraph D9["Monitoring & Feedback"]
-    MF[Stage: Monitoring & Feedback]:::stage
-    R9[Risk: Concept drift, performance degradation, undetected harmful outputs]:::risk
-    C9[Control: Drift detection, human-in-the-loop review, retraining triggers, rollback plans  
-    **ISO/IEC 42001:** 8.11.1, 8.11.2  
-    **NIST AI RMF:** Govern 4.2, Manage 5.3  
-    **EU AI Act:** Art. 61(1)]:::control
+    MF["Stage: Monitoring & Feedback"]:::stage
+    R9["Risk: Concept drift; performance degradation; harmful outputs undetected"]:::risk
+    C9["Control: Drift detection; human-in-the-loop review; retraining triggers; rollback plans | ISO/IEC 42001: 8.11.1, 8.11.2 | NIST AI RMF: Govern 4.2, Manage 5.3 | EU AI Act: Art. 61(1)"]:::control
   end
 
   %% FLOW
