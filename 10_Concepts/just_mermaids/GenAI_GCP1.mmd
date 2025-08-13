@@ -1,34 +1,42 @@
 flowchart LR
-    %% --- PIPELINE: BUSINESS → USE CASE → DATA → TRAIN → DEPLOY → ASSURE ---
-    A0[Business Drivers\nCloud modernization • Digital transformation • GenAI adoption] --> A1[Use Case Selection\nFraud | Claims | Underwriting | CX]
-    A1 --> CP1{{CP1: Ingest & Prep Gates\nDLP/redact • PII tokenization • Lineage • Quality}}
-    CP1 --> A2[Data Layers\nFeature Store • Data Lake/Objects • Warehouse/Analytics]
-    A2 --> CP2{{CP2: Train Gates\nPrivate networking • Reproducible pipelines • DP/adv. training • Approvals}}
-    CP2 --> A3[Model Dev & Train\n(LLMs/ML on managed AI platform)]
-    A3 --> A4[Model Registry & Artifacts\nVersioning • Lineage • Signatures]
-    A4 --> CP3{{CP3: Serve Gates\nAPI authN/Z • ZTNA • Rate/quotas • Prompt/output filters}}
-    CP3 --> A5[Model Serving & APIs\nGateway • Service mesh • Policy enforcement]
-    A5 --> CP4{{CP4: Assurance Gates\nDrift/bias • Inference/abuse anomalies • SIEM • Audit evidence}}
-    CP4 --> A6[Observability & Continuous Assurance\nDashboards • Tickets • Feedback loops]
-    A6 -. feedback .-> A2
 
-    %% --- SECURITY & GOVERNANCE RAIL (PARALLEL) ---
-    subgraph SG[Security & Governance Rail (applies end-to-end)]
-        SG1[IAM least-privilege & JIT access]
-        SG2[KMS/CMEK/HSM for data & model artifacts]
-        SG3[Network isolation\nPrivate svc connect • VPC perimeters]
-        SG4[Supply chain security\nSigned images/models • SBOM • Policy as code]
-        SG5[AI-specific guardrails\nOWASP LLM Top 10 • CSA AI Controls]
-        SG6[Compliance frameworks\nISO/IEC 42001 • NAIC Principles • NIST]
-    end
+%% === PIPELINE: BUSINESS → USE CASE → DATA → TRAIN → DEPLOY → ASSURE ===
 
-    %% --- DOTTED ALIGNMENT (RAIL → STAGES) ---
-    SG1 -.-> A2
-    SG2 -.-> A2
-    SG3 -.-> A3
-    SG4 -.-> A4
-    SG5 -.-> A5
-    SG6 -.-> CP1
-    SG6 -.-> CP2
-    SG6 -.-> CP3
-    SG6 -.-> CP4
+A0["Business Drivers<br>Cloud modernization • Digital transformation<br>GenAI adoption"] --> A1["Use Case Selection<br>Fraud • Claims • Underwriting • CX"]
+
+A1 --> CP1["CP1: Ingest & Prep Gates<br>NLP/redact • PII tokenization • Lineage • Quality"]
+CP1 --> A2["Data Layers<br>Feature Store • Data Lake/Objects • Warehouse/Analytics"]
+
+A2 --> CP2["CP2: Train Gates<br>Private networking • Reproducible pipelines<br>DP/advanced training • Approvals"]
+CP2 --> A3["Model Dev & Train<br>LLMs/ML on managed AI platform"]
+
+A3 --> A4["Model Registry & Artifacts<br>Versioning • Lineage • Signatures"]
+A4 --> CP3["CP3: Serve Gates<br>API auth/N/Z • ZTNA • Quotas • Prompt/output filters"]
+
+CP3 --> A5["Model Serving & APIs<br>Gateway • Service mesh • Policy enforcement"]
+A5 --> CP4["CP4: Assurance Gates<br>Drift/bias • Anomalies • SIEM • Audit evidence"]
+
+CP4 --> A6["Observability & Continuous Assurance<br>Dashboards • Tickets • Feedback loops"]
+A6 --> A2
+
+%% === SECURITY & GOVERNANCE RAIL (PARALLEL) ===
+
+subgraph SG["Security & Governance Rail (applies end-to-end)"]
+  SG1["IAM<br>Least-privilege & JIT access"]
+  SG2["KMS/CMEK/HSM<br>For data & model artifacts"]
+  SG3["Network Isolation<br>Private svc connect • VPC perimeters"]
+  SG4["Supply Chain Security<br>Signed images/models • SBOM • Policy as code"]
+  SG5["AI Guardrails<br>OWASP LLM Top 10 • CSA AI Controls"]
+  SG6["Compliance Frameworks<br>ISO/IEC 42001 • NAIC • NIST"]
+end
+
+%% === GOVERNANCE ↔ ALIGNMENT (RAIL → STAGES) ===
+
+SG1 --> A2
+SG2 --> CP1
+SG3 --> A3
+SG4 --> A4
+SG5 --> A5
+SG6 --> CP2
+SG6 --> CP3
+SG6 --> CP4
